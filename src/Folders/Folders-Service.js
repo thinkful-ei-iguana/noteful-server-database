@@ -5,6 +5,7 @@ const FolderService = {
   },
   
   insertFolder(knex, newFolder) {
+    console.log('made it to the service');
     return knex
       .insert(newFolder)
       .into('noteful_folders')

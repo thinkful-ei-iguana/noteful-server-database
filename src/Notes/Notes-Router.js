@@ -27,10 +27,13 @@ notesRouter
     const {note_name, content} = req.body;
     const newNote = { note_name, content }
     for(const [key, value] of Object.entries(newNote))
+    {
       if (value === null)
         return res.status(400).json({
           error: {message: `missing '${key}' in request body`}
-        })
+        });
+    }
+    console.log('got to line 36');
     NotesService.insertNote(
       req.app.get('db'),
       newNote
@@ -45,7 +48,7 @@ notesRouter
   });
 
 notesRouter
-  .route('/:not_id')
+  .route('/:note_id')
   .all((req, res, next) => {
     NotesService.getById(
       req.app.get('db'),
@@ -62,12 +65,12 @@ notesRouter
       })
       .catch(next);
   })
-  .get((req, res, next)=>{
+  .delete((req, res, next)=>{
     NotesService.deleteNote(
       req.app.get('db'),
       req.params.note_id
     )
-      .then(numRowsAffected =>{
+      .then(numRowsAffected => {
         res.status(204).end();
       })
       .catch(next);

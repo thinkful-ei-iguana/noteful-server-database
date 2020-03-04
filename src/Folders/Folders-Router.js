@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const xss = require('xss');
-const FoldersService = require('./folders-service');
+const FoldersService = require('./Folders-Service');
 
 const foldersRouter = express.Router();
 const jsonParser = express.json();
@@ -24,9 +24,9 @@ foldersRouter
   .post(jsonParser, (req, res, next) => {
     const { folder_name } = req.body;
     const newFolder = { folder_name };
-
+    console.log(newFolder);
     for (const [key, value] of Object.entries(newFolder)) {
-      if (value == null) {
+      if (value === null) {
         return res.status(400).json({
           error: { message: `Missing '${key}' in request body` }
         });
@@ -37,6 +37,7 @@ foldersRouter
       newFolder
     )
       .then(folder => {
+        console.log('made it to line 40');
         res
           .status(201)
           .location(path.posix.join(req.originalUrl + `/${folder.id}`))
