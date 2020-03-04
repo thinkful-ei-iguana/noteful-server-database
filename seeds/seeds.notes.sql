@@ -1,4 +1,4 @@
-INSERT INTO notes (note_name, content)
+INSERT INTO notes (note_name, content) 
 
 VALUES 
   (
