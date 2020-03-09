@@ -8,9 +8,7 @@ const foldersRouter = require('./Folders/folders-router');
 const notesRouter = require('./Notes/notes-router');
 
 const app = express();
-app.use(cors({
-  origin: CLIENT_ORIGIN
-}));
+app.use(cors());
 app.use(morgan(NODE_ENV === 'production' ? 'tiny' : 'common'));
 app.use(helmet());
 
