@@ -22,7 +22,10 @@ notesRouter
       .then(notes => {
         res.json(notes.map(serializeNote));
       })
-      .catch(next)
+      .catch((err) => {
+        console.log(err);
+        next();
+      })
   })
   .post(jsponParser,(req, res, next) => {
     const {note_name, content, folderid} = req.body;
