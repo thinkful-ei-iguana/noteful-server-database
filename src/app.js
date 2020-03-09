@@ -7,10 +7,12 @@ const { NODE_ENV } = require('./config');
 const app = express();
 const foldersRouter = require('./Folders/folders-router');
 const notesRouter = require('./Notes/notes-router');
-app.use(cors());
+
 app.use(morgan(NODE_ENV === 'production' ? 'tiny' : 'common'));
 app.use(helmet());
-
+app.use(cors({
+  origin: 'https://noteful-app-8xhsvl3e5.now.sh'
+}));
 
 app.use('/api/folders', foldersRouter);
 app.use('/api/notes', notesRouter);
