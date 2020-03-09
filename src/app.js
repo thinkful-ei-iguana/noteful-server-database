@@ -11,7 +11,7 @@ const notesRouter = require('./Notes/notes-router');
 app.use(morgan(NODE_ENV === 'production' ? 'tiny' : 'common'));
 app.use(helmet());
 app.use(cors({
-  origin: 'https://noteful-app-8xhsvl3e5.now.sh'
+  origin: 'https://noteful-app-8xhsvl3e5.now.sh/'
 }));
 
 app.use('/api/folders', foldersRouter);
