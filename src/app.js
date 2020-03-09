@@ -4,8 +4,8 @@ const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
 const { NODE_ENV, CLIENT_ORIGIN } = require('./config');
-const foldersRouter = require('./Folders/folders-router');
-const notesRouter = require('./Notes/notes-router');
+const foldersRouter = require('./Folders/Folders-router');
+const notesRouter = require('./Notes/Notes-router');
 
 const app = express();
 app.use(cors());
