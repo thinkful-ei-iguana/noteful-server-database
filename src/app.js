@@ -9,7 +9,7 @@ const notesRouter = require('./Notes/notes-router');
 
 const app = express();
 app.use(cors({
-  origin: CLIENT_ORIGIN
+  origin: 'https://noteful-app-8xhsvl3e5.now.sh/add-folder'
 }));
 app.use(morgan(NODE_ENV === 'production' ? 'tiny' : 'common'));
 app.use(helmet());
