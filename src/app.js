@@ -9,16 +9,10 @@ const notesRouter = require('./Notes/notes-router');
 
 const app = express();
 app.use(cors({
-  origin: 'https://noteful-app-8xhsvl3e5.now.sh'
+  origin: CLIENT_ORIGIN
 }));
 app.use(morgan(NODE_ENV === 'production' ? 'tiny' : 'common'));
 app.use(helmet());
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://noteful-app-8xhsvl3e5.now.sh"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
 
 
 app.use('/api/folders', foldersRouter);
