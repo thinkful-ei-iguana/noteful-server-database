@@ -4,14 +4,15 @@ const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
-const app = express();
 const foldersRouter = require('./Folders/folders-router');
 const notesRouter = require('./Notes/notes-router');
+
+const app = express();
 
 app.use(morgan(NODE_ENV === 'production' ? 'tiny' : 'common'));
 app.use(helmet());
 app.use(cors({
-  origin: 'https://noteful-app-8xhsvl3e5.now.sh'
+  origin:'http://noteful-app-8xhsvl3e5.now.sh'
 }));
 
 app.use('/api/folders', foldersRouter);
